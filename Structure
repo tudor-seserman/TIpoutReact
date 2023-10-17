@@ -1,0 +1,79 @@
+Tipout
+
+An app to calculate end of shift distribution of tips collected and distributed by a restaurant employer.
+
+Basic Structure:
+
+Employer that can interact with employees for
+their business and enter in necessary information.
+Employees are attached to Employer.
+
+Models
+Employer - Pays the tip out
+Employee Roles-
+--Server - Kind of employee that receives tips and collects tips
+--Busser - Kind of employee that receives tips
+--Bartender- Kind of employee that receives tips and collects tips and
+--Kitchen - Kind of employee that receives tips
+Tips - What is collected daily
+TipsCollected - Entity responsible for processing the colleced tips from Employees
+EmployeeTipRates - The rates of used to calculate an Employers tips
+AbstractEntity - Used to set the ids
+
+View
+--Homepage with the ability to enter tips collected by employee,
+will return what is due to each employee
+--Page to add employees
+--Page to edit/achieve or soft delete/delete employees
+--Settings page where employer has access to Archived Employees and able to set tipout rates
+
+Extended Features:
+--Improve UI
+    --Update navbar
+    --Add logo
+    --Add date/time to each report
+    --Add employee/employer icons
+--Be able to handle different strategies for
+    distributing money from tip pool:
+    --One pool that aggregates money and then is divided to Employees
+    --Each Employee is owes part of their collected tips to other entities
+        --Server tips out Bar and Busser
+        --Server tips out Bar and Busser and Bartender tips out Busser
+    --Some Employees pool tips but others do not
+--See/adjust past tipouts by date/time
+--Control access to who can see what
+--User can have multiple roles
+--Custom Roles
+--Custom events ie parties
+--Split sales between different classifications ie food and liquor
+--Have defaults for the roles, be able to adjust those defaults
+--Employee accounts where they can see how money is collected and distributed
+
+5/22
+Employer(under development) has a list of Employees
+will eventually allow different Employers to login and
+add to their employees
+
+Employees are split into two groups:
+--TipCollector - A role which includes handling tips and
+receiving a payout from the tip pool
+
+--TippedNotCollector - A role which receives a payout
+from the tip pool put does not handle tips
+
+--Employees are further divided into roles which have
+default payouts from the tip pool
+
+--TipsCollected handles gathering data from Employees which will
+be processed by TipOut
+
+6/9
+
+--Refactored the Employee class to be divided between MoneyHandler and NonMoneyHandler
+
+--Added abilities to edit/update/delete Employees
+
+--Added Settings Page where Employer can see control Tipout schema and archived employees
+
+
+
