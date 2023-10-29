@@ -5,7 +5,11 @@ services:
     secrets:
       - db-password
     environment:
-      MYSQL_HOST: db
+      - "MYSQL_DATABASE=${DB}"
+      - "MYSQL_USER=${DB_USER_NAME}"
+      - "MYSQL_PASSWORD=${DB_PASSWORD}"
+      - "MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}"
+      - "MYSQL_HOST=db"
     networks:
       - react-spring
       - spring-mysql
@@ -19,9 +23,11 @@ services:
     image: mysql:8.0.18
     env_file:
       - .env
-    # environment:
-    #   - MYSQL_DATABASE=/run/secrets/database
-    #   - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/password
+    environment:
+      - "MYSQL_DATABASE=${DB}"
+      - "MYSQL_USER=${DB_USER_NAME}"
+      - "MYSQL_PASSWORD=${DB_PASSWORD}"
+      - "MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}"
     restart: always
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "--silent"]
@@ -37,9 +43,8 @@ services:
   frontend:
     build:
       context: frontend
-      target: development
     ports:
-      - 3000:3000
+      - 5173:5173
     volumes:
       - ./frontend/src:/code/src
       - /project/node_modules
