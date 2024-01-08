@@ -1,9 +1,5 @@
 {
   "java.configuration.updateBuildConfiguration": "interactive",
   "java.compile.nullAnalysis.mode": "automatic",
-  "cSpell.words": [
-    "Avenir",
-    "Tipout",
-    "Tippool"
-  ]
+  "cSpell.words": ["Avenir", "busser", "Tipout", "Tippool"]
 }
